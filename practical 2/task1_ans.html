@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Diploma Course</h1>
+    <select id="menu">
+        <option>SpDip in WebDevelopment</option>
+        <option>SpDip in AI</option>
+        <option>SpDip in Media</option>
+    </select>
+    <h2>Module</h2>
+    <p id="results">Placeholder for results</p>
+    <script>
+        class Course {
+            constructor(dipname) {
+                this.dip = dipname;
+            }
+
+            taking() {
+                return 'I am taking ' + this.dip + ' diploma';
+            }
+        }
+        class SpDiploma extends Course {
+            constructor(dipname, modname) {
+                super(dipname);
+                this.module = modname;
+            }
+
+            show() {
+                return this.taking() + ', the module is ' + this.module
+            }
+        }
+
+        //create array to store instances of the class
+        let courses = [];
+        courses[0] = new SpDiploma('SpDip in Webdevelopment', 'MAD');
+        courses[1] = new SpDiploma('SpDip in AI', 'Python');
+        courses[2] = new SpDiploma('SpDip in Media', 'Unity');
+
+        //refer to menu and results
+        let m = document.getElementById("menu")
+        let p = document.getElementById("results")
+        console.log(m)
+        console.log(p)
+
+        //add eventlistener to menu
+        m.addEventListener("change",() =>{
+            console.log("menu changed")
+            console.log("selected index: " + m.selectedIndex)
+            console.log(courses[m.selectedIndex].show())
+
+            //display result
+            p.innerText = courses[m.selectedIndex].show()
+        })
+        // document.write(mycourse.show());
+    </script>
+
+</body>
+
+</html>

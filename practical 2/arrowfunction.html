@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Arrow function</h1>
+    <p>The <Strong>this</Strong> keyword represents the header object</p>
+    <button id="btn">Click Me!</button>
+    <p><strong>this</strong> represents:</p>
+    <p id="demo"></p>
+
+    <script>
+        class Header {
+            constructor() {
+                this.colour = "Red"
+            }
+            changeColour = () => {
+                document.getElementById("demo").innerHTML += this.colour
+            }
+        }
+
+        myheader = new Header()
+
+        window.addEventListener("load", myheader.changeColour)
+
+        document.getElementById("btn").addEventListener("click", myheader.changeColour  )
+    </script>
+</body>
+
+</html>

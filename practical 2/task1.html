@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Task 1</title>
+</head>
+
+<body>
+    <h1>Diploma Course</h1>
+    <form>
+        <select id="Diplo">
+            <option value="web" id="webdev">SpDip in Webdevelopment</option>
+            <option value="A" id="AI">SpDip in AI</option>
+            <option value="Medi" id="Media">SpDip in Media</option>
+        </select>
+    </form>
+
+    <h2>Module</h2>
+    <p id="demo"></p>
+
+    <script>
+        var a = document.getElementById("Diplo")
+        class Course {
+            constructor(module) {
+                this.mod = module
+            }
+
+            modulename() {
+                return " I am taking " + this.mod + " module"
+            }
+        }
+
+        class Diploma extends Course {
+            constructor(module, spdip) {
+                super(module)
+                this.sdip = spdip
+            }
+            dip() {
+                return this.modulename() + ", it will award " + this.sdip
+            }
+        }
+
+        SP = function () {
+            if (a.value == "web") {
+                var dip1 = new Diploma("MAD", "Spdip in WebDevelopment")
+                return document.write(dip1.dip())
+                document.getElementById("demo").innerHTML == dip1.dip();
+                SP.addEventListener("click", dip1.SP.bind(dip1))
+                a.getElementById("Diplo").addEventListener("click" , dip1.SP.bind(dip1))
+            }
+            else if (a.value == "A") {
+                var dip2 = new Diploma("Python", "Spdip in AI")
+                return console.log(dip2.dip())
+            }
+            else if (a.value == "Medi") {
+                var dip3 = new Diploma("Unity", "Spdip in Media")
+                return document.write(dip3.dip())
+            }
+        }
+        // SP.addEventListener("click", mycolour.changeColour.bind(mycolour))
+
+        // document.getElementById("Diplo").addEventListener("click" , mycolour.changeColour.bind(mycolour))
+    </script>
+
+</body>
+
+</html>

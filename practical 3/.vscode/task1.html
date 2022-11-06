@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Loan Calculator</h1>
+    <h3>Enter Loan info</h3>
+    <p>1. Amount of loan (Principal):
+        <input type="text" id="principal" value="10000" />
+    </p>
+    <p>2. Annual interest rate (percent):
+        <input type="text" id="interest" value="3" />
+    </p>
+    <p>3. Repayment period (years):
+        <input type="text" id="years" value="5" />
+    </p>
+    <button id="compute">compute</button>
+    <p>4. Monthly Repayment:
+        <input type="text" id="monthly" />
+    </p>
+    <p>5. Total payment
+        <input type="text" id="total" />
+    </p>
+    <p>
+        6. Total interest payment
+        <input type="text" id="totalinterest" />
+    </p>
+
+    <script>
+        let principal = document.getElementById("principal")
+        let interest = document.getElementById("interest")
+        let years = document.getElementById("years")
+        let compute = document.getElementById("compute")
+        let monthly = document.getElementById("monthly")
+        let total = document.getElementById("total")
+        let totalinterest = document.getElementById("totalinterest")
+
+        class Loan {
+            constructor(principal, interest, payment) {
+                this.principal = principal;   //p
+                this.interest = interest;   //i
+                this.payment = payment;     //t
+            }
+        }
+
+        class Repayment extends Loan {
+            get_monthly_repayment() {
+                //math.pow == **(to the power of)
+                let y = Math.pow(1 + this.interest, this.payment)
+                let monthly = this.principal * y * this.interest / (y - 1)
+                return monthly
+            }
+
+        }
+
+        //add event listener
+        compute.addEventListener("click", () => {
+            console.log("button clicked")
+
+            let p = parseFloat(principal.value)
+            let i = parseFloat(interest.value)
+            let t = parseFloat(years.value)
+
+            //conversion to interest per month , not percent
+            i = i / 100 / 12
+
+            //conversion of time to months
+            t = t * 12
+
+            let repayInstance = new Repayment(p, i, t)
+            console.log(repayInstance.get_monthly_repayment())
+
+            //display result
+            let m = repayInstance.get_monthly_repayment()
+            monthly.value = m;
+            total.value = m * t
+            totalinterest.value = m * t - p
+        })
+
+    </script>
+</body>
+
+</html>

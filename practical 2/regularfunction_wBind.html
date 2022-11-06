@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Regular function</h1>
+    <p>The<strong>this</strong> keyword represents different object depending on how the function was called</p>
+    <button id="btn">Click Me!</button>
+    <p><strong>this </strong> represents:</p>
+    <p id="demo"></p>
+    <p>See the difference before and after the button was clicked</p>
+
+    <script>
+        class myColour{
+            constructor(colour){
+                this.colour = colour
+            }
+
+            changeColour = function(){
+                console.log(this.colour)
+                document.getElementById("demo").innerHTML +=this.colour
+            }
+        }
+
+        mycolour =new myColour("red")
+        mycolour.changeColour
+
+        window.addEventListener("load", mycolour.changeColour.bind(mycolour))
+
+        document.getElementById("btn").addEventListener("click" , mycolour.changeColour.bind(mycolour))
+
+        //using bind , the value of the colour can be retrieved
+    </script>
+    
+</body>
+</html>

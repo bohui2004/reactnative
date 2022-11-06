@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>My simple calculator</h1>
+    <p>Number 1 :
+        <input type="text" value="" id="n1">
+        Number 2 :
+        <input type="text" value="" id="n2">
+    </p>
+
+    <p>
+        <button id="add">Add</button>
+        <button id="subtract">Subtract</button>
+        <button id="multiply">Multiply</button>
+        <button id="divide">divide</button>
+    </p>
+
+    <script>
+        let n1 = document.getElementById("n1")
+        let n2 = document.getElementById("n2")
+        let add = document.getElementById("add")
+        let subtract = document.getElementById("subtract")
+        let multiply = document.getElementById("multiply")
+        let divide = document.getElementById("divide")
+
+
+        //test
+        console.log(n1)
+        console.log(n2)
+
+        //create function to do math operation
+        const mathfn = (operator , num1 ,num2) =>{
+            switch(operator){
+                case '+':
+                return num1 + num2
+                case '-':
+                return num1 - num2
+                case '*':
+                return num1 * num2
+                case '/':
+                return num1 / num2
+            }
+        }
+
+        //add eventlistener to all buttons
+        add.addEventListener("click", () =>{
+            alert(mathfn("+", parseInt(n1.value) , parseInt(n2.value)))
+        })
+        subtract.addEventListener("click", () =>{
+            alert(mathfn("-", parseInt(n1.value) , parseInt(n2.value)))
+        })
+        multiply.addEventListener("click", () =>{
+            alert(mathfn("*", parseInt(n1.value) , parseInt(n2.value)))
+        })
+        divide.addEventListener("click", () =>{
+            alert(mathfn("/", parseInt(n1.value) , parseInt(n2.value)))
+        })
+
+        
+    </script>
+
+</body>
+
+</html>
